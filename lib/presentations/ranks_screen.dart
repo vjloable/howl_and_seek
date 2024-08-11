@@ -72,7 +72,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                       "Juan dela Cruz",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -84,7 +84,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                 child: Container(
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: CustomColors.secondaryBackground.withOpacity(0.6),
+                                    color: CustomColors.secondaryBackground,
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(40),
                                       topRight: Radius.circular(40),
@@ -147,7 +147,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                       "Carlos Yulo",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -159,7 +159,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                 child: Container(
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: CustomColors.secondaryBackground.withOpacity(0.6),
+                                    color: CustomColors.secondaryBackground,
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(40),
                                       topRight: Radius.circular(40),
@@ -222,7 +222,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                       "Juan dela Cruz",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -234,7 +234,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                 child: Container(
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: CustomColors.secondaryBackground.withOpacity(0.6),
+                                    color: CustomColors.secondaryBackground,
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(40),
                                       topRight: Radius.circular(40),
@@ -283,7 +283,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
                     ),
-                    border: Border(top: BorderSide(width: 5, color: CustomColors.light)),
+                    border: Border(top: BorderSide(width: 5, color: CustomColors.secondaryBackground)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(30),
@@ -298,7 +298,7 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(40),
-                                  color: CustomColors.secondaryBackground.withOpacity(0.8),
+                                  color: CustomColors.primaryBackground.withOpacity(0.75),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 40),
@@ -315,10 +315,9 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                   width: 30,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(40),
-                                    color: CustomColors.secondaryBackground.withOpacity(0.8),
                                     border: Border.all(
                                       color: CustomColors.light,
-                                      width: 3,
+                                      width: 1,
                                     ),
                                   ),
                                   child: Center(child: Text("${index+4}", style: TextStyle(color: CustomColors.light, fontSize: 12, fontWeight: FontWeight.w500))),
@@ -328,21 +327,13 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                                 alignment: Alignment.centerRight,
                                 child: Container(
                                   height: 30,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    gradient: LinearGradient(
-                                      colors: CustomColors.premiumBackground,
-                                      begin: Alignment.bottomLeft,
-                                      end: Alignment.topRight,
-                                    ),
-                                  ),
+                                  width: 120,
                                   child: Center(
                                     child: FittedBox(
                                       fit: BoxFit.scaleDown,
                                       child: Padding(
                                         padding: const EdgeInsets.all(10),
-                                        child: Text("1,000,000,000 pts", style: TextStyle(color: CustomColors.light, fontSize: 10, fontWeight: FontWeight.w500)),
+                                        child: Text("1,000,000,000", style: TextStyle(color: CustomColors.light, fontSize: 10, fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ),
@@ -367,18 +358,14 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
               height: 200,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    CustomColors.primaryBackground.withOpacity(0.3),
-                    CustomColors.secondaryBackground.withOpacity(0.3),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                  colors: CustomColors.accentBackground,
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
                 ),
                 borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(5000),
                   bottomLeft: Radius.circular(5000),
                 ),
-                border: Border(bottom: BorderSide(width: 5, color: CustomColors.light)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -395,9 +382,9 @@ class _RanksScreenState extends State<RanksScreen> with TickerProviderStateMixin
                           children: [
                             Transform.scale(
                               scale: 1.5,
-                              child: CustomIcons.ranks(CustomColors.light.withOpacity(0.5)),
+                              child: CustomIcons.ranks(CustomColors.secondaryBackground),
                             ),
-                            Text("RANKS", style: TextStyle(letterSpacing: 1.15, color: CustomColors.light.withOpacity(0.5), fontSize: 32, fontWeight: FontWeight.w300)),
+                            Text("RANKS", style: TextStyle(letterSpacing: 1.15, color: CustomColors.secondaryBackground, fontSize: 32, fontWeight: FontWeight.w300)),
                           ],
                         ),
                       ),

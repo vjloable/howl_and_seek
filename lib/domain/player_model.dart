@@ -5,20 +5,22 @@ class Player{
   final String? name;
   final String? email;
   final DateTime? createdAt;
-  final DateTime? birthdate;
+  final DateTime? lastScan;
   final bool isLocked;
   final int permissionLevel;
   final int permissionMax;
+  final double points;
 
   Player({
     this.name = "",
     required this.uid,
     this.createdAt,
+    this.lastScan,
     required this.email,
     this.isLocked = false,
     this.permissionLevel = 0,
     this.permissionMax = 0,
-    this.birthdate,
+    this.points = 0,
   });
 
   factory Player.fromFirestore(
@@ -31,10 +33,11 @@ class Player{
       email: data?['email'] ?? "",
       uid: data?['uid'],
       createdAt: (data?['creation'] as Timestamp).toDate(),
-      birthdate: data?['birthdate'] == null ? null : ((data?['birthdate'] as Timestamp).toDate()),
+      lastScan: data?['lastScan'] == null ? null : ((data?['lastScan'] as Timestamp).toDate()),
       isLocked: data?['isLocked'],
       permissionLevel: data?['permissionLevel'],
       permissionMax: data?['permissionMax'],
+      points: data?['points'],
     );
   }
 
@@ -45,10 +48,11 @@ class Player{
       if (email != null) "email" : email else "email" : "",
       "uid": uid,
       if (createdAt != null) "creation" : createdAt else "creation" : serverTimestamp,
-      if (birthdate != null) "birthdate" : birthdate else "birthdate" : serverTimestamp,
+      if (lastScan != null) "birthdate" : lastScan else "lastScan" : null,
       "isLocked": isLocked,
       "permissionLevel": permissionLevel,
       "permissionMax": permissionMax,
+      "points": points,
     };
   }
 }

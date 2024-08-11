@@ -8,6 +8,16 @@ class CustomColors {
   static MaterialColor error = createMaterialColor(const Color(0xFFFF5454));
   static MaterialColor light = createMaterialColor(const Color(0xFFF4F4F4));
 
+  static List<Color> lightBackground = [
+    const Color(0xFF81FFE6),
+    const Color(0xFFD9FFF7),
+  ];
+
+  static List<Color> accentBackground = [
+    CustomColors.primaryAccent,
+    CustomColors.secondaryAccent,
+  ];
+
   static List<Color> premiumBackground = [
     const Color(0xFF0C0C0C),
     const Color(0xFF1B1B1B),

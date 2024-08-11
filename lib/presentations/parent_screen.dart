@@ -34,12 +34,9 @@ class _ParentScreenState extends State<ParentScreen> {
             width: 100,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  CustomColors.secondaryBackground.withOpacity(0.3),
-                  CustomColors.primaryAccent.withOpacity(0.3),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+                colors: CustomColors.lightBackground,
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
               ),
             ),
           ),
@@ -62,7 +59,7 @@ class _ParentScreenState extends State<ParentScreen> {
             alignment: Alignment.topCenter,
             child: Column(
               children: [
-                Container(height: 50),
+                Container(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Material(
@@ -73,7 +70,14 @@ class _ParentScreenState extends State<ParentScreen> {
                       height: 50,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: CustomColors.secondaryBackground,
+                        color: CustomColors.primaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            color: CustomColors.primaryBackground.withOpacity(0.25),
+                            offset: const Offset(0, 4),
+                            blurRadius: 4,
+                          )
+                        ],
                         borderRadius: const BorderRadius.all(Radius.circular(40)),
                       ),
                       child: Padding(
@@ -103,8 +107,9 @@ class _ParentScreenState extends State<ParentScreen> {
                                 backgroundColor: Colors.transparent,
                                 overlayColor: CustomColors.secondaryAccent,
                                 borderColor: CustomColors.secondaryAccent,
+                                borderSide: BorderSide(color: CustomColors.secondaryAccent, width: 3),
                                 height: 30,
-                                child: Text("LOGOUT", style: TextStyle(color: CustomColors.secondaryAccent, fontSize: 12, fontWeight: FontWeight.w400)),
+                                child: Text("LOGOUT", style: TextStyle(color: CustomColors.secondaryAccent, fontSize: 12, fontWeight: FontWeight.w700)),
                               ),
                             ),
                           ],

@@ -30,7 +30,7 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
             surfaceTintColor: Colors.transparent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(40),
-              side: widget.borderSide ?? const BorderSide(),
+              side: widget.borderSide ?? const BorderSide(width: 0, color: Colors.transparent),
             ),
             overlayColor: widget.overlayColor,
             shadowColor: Colors.transparent,

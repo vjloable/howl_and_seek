@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:howl_and_seek/presentations/scanner/scan_screen.dart';
+import 'package:intl/intl.dart';
 
 import '../common_widgets/rounded_elevated_button.dart';
 import '../domain/player_model.dart';
@@ -44,18 +45,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
             ),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  CustomColors.primaryBackground.withOpacity(0.3),
-                  CustomColors.secondaryBackground.withOpacity(0.3),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+                colors: CustomColors.accentBackground,
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
               ),
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(5000),
                 bottomLeft: Radius.circular(5000),
               ),
-              border: Border(bottom: BorderSide(width: 5, color: CustomColors.light)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -72,9 +69,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         children: [
                           Transform.scale(
                             scale: 1.5,
-                            child: CustomIcons.home(CustomColors.light.withOpacity(0.5)),
+                            child: CustomIcons.home(CustomColors.secondaryBackground),
                           ),
-                          Text("HOME", style: TextStyle(letterSpacing: 1.15, color: CustomColors.light.withOpacity(0.5), fontSize: 32, fontWeight: FontWeight.w300)),
+                          Text("HOME", style: TextStyle(letterSpacing: 1.15, color: CustomColors.secondaryBackground, fontSize: 32, fontWeight: FontWeight.w300)),
                         ],
                       ),
                     ),
@@ -94,12 +91,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                   children: [
                     SizedBox(
                       height: 100,
-                      child: CustomIcons.paws(CustomColors.light),
+                      child: CustomIcons.paws(CustomColors.secondaryBackground),
                     ),
                     const SizedBox(height: 10),
-                    Text("50,000.00", style: TextStyle(color: CustomColors.light, fontSize: 40, fontWeight: FontWeight.w700)),
+                    Text(NumberFormat.currency(name: "").format(widget.player!.points), style: TextStyle(color: CustomColors.secondaryBackground, fontSize: 40, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 10),
-                    Text("HOWL POINTS", style: TextStyle(color: CustomColors.light, fontSize: 14, fontWeight: FontWeight.w500)),
+                    Text("HOWL POINTS", style: TextStyle(color: CustomColors.secondaryBackground, fontSize: 14, fontWeight: FontWeight.w500)),
                   ],
                 ),
               ),
@@ -113,26 +110,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
               height: 200,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    CustomColors.primaryBackground.withOpacity(0.3),
-                    CustomColors.secondaryBackground.withOpacity(0.3),
-                  ],
+                  colors: CustomColors.accentBackground,
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
-                border: Border(top: BorderSide(width: 5, color: CustomColors.light)),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5000),
                   topRight: Radius.circular(5000),
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 30),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
@@ -145,13 +138,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   height: 80,
                                   width: 80,
                                   child: RoundedElevatedButton(
-                                    backgroundColor: CustomColors.primaryAccent.withOpacity(0.1),
+                                    backgroundColor: CustomColors.secondaryBackground,
                                     onPressed: () {
                                       print("object");
                                     },
                                     overlayColor: CustomColors.light,
-                                    borderColor: CustomColors.light,
-                                    borderSide: BorderSide(color: CustomColors.light, width: 5,),
                                     child: CustomIcons.howl(CustomColors.light),
                                   ),
                                 ),
@@ -163,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                       "HOWL",
                                       style: TextStyle(
                                         letterSpacing: 1.15,
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -176,9 +167,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         ),
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 30),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(bottom: 30),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
@@ -191,14 +182,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   height: 80,
                                   width: 80,
                                   child: RoundedElevatedButton(
-                                    backgroundColor: CustomColors.primaryAccent.withOpacity(0.1),
+                                    backgroundColor: CustomColors.light,
                                     onPressed: () {
                                       print("object");
                                     },
-                                    overlayColor: CustomColors.light,
-                                    borderColor: CustomColors.light,
-                                    borderSide: BorderSide(color: CustomColors.light, width: 5,),
-                                    child: CustomIcons.receive(CustomColors.light),
+                                    overlayColor: CustomColors.secondaryBackground,
+                                    child: CustomIcons.receive(CustomColors.secondaryBackground),
                                   ),
                                 ),
                                 SizedBox(
@@ -209,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                       "RECEIVE",
                                       style: TextStyle(
                                         letterSpacing: 1.15,
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -222,9 +211,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         ),
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 30),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 30),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
@@ -237,13 +226,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   height: 80,
                                   width: 80,
                                   child: RoundedElevatedButton(
-                                    backgroundColor: CustomColors.primaryAccent.withOpacity(0.1),
+                                    backgroundColor: CustomColors.secondaryBackground,
                                     onPressed: () {
                                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanScreen()));
                                     },
                                     overlayColor: CustomColors.light,
-                                    borderColor: CustomColors.light,
-                                    borderSide: BorderSide(color: CustomColors.light, width: 5,),
                                     child: CustomIcons.seek(CustomColors.light),
                                   ),
                                 ),
@@ -255,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                       "SEEK",
                                       style: TextStyle(
                                         letterSpacing: 1.15,
-                                        color: CustomColors.light,
+                                        color: CustomColors.secondaryBackground,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
