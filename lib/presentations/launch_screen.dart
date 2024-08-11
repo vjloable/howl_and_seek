@@ -75,47 +75,50 @@ class _LaunchScreenState extends State<LaunchScreen> {
               ),
             ),
           ),
-          Column(
-            children: [
-              const Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border(top: BorderSide(width: 5, color: CustomColors.light),),
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
-                  color: CustomColors.secondaryBackground.withOpacity(0.2),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Column(
-                    children: [
-                      RoundedElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegisterScreen(),));
-                        },
-                        backgroundColor: Colors.transparent,
-                        overlayColor: CustomColors.light,
-                        borderColor: CustomColors.light,
-                        child: Text("REGISTER", style: TextStyle(color: CustomColors.light, fontSize: 16, fontWeight: FontWeight.w800)),
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        height: 18,
-                        child: Text("OR", style: TextStyle(color: CustomColors.light, fontSize: 12, fontWeight: FontWeight.w300)),
-                      ),
-                      const SizedBox(height: 10),
-                      RoundedElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-                        },
-                        backgroundColor: CustomColors.primaryAccent,
-                        overlayColor: CustomColors.primaryBackground,
-                        child: Text("LOG-IN", style: TextStyle(color: CustomColors.primaryBackground, fontSize: 16, fontWeight: FontWeight.w800)),
-                      ),
-                    ],
+          SizedBox(
+            height: 200,
+            child: Column(
+              children: [
+                const Spacer(),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(width: 5, color: CustomColors.light),),
+                    borderRadius: const BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+                    color: CustomColors.secondaryBackground.withOpacity(0.2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Column(
+                      children: [
+                        RoundedElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegisterScreen(),));
+                          },
+                          backgroundColor: Colors.transparent,
+                          overlayColor: CustomColors.light,
+                          borderColor: CustomColors.light,
+                          child: Text("REGISTER", style: TextStyle(color: CustomColors.light, fontSize: 16, fontWeight: FontWeight.w800)),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: 18,
+                          child: Text("OR", style: TextStyle(color: CustomColors.light, fontSize: 12, fontWeight: FontWeight.w300)),
+                        ),
+                        const SizedBox(height: 10),
+                        RoundedElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                          },
+                          backgroundColor: CustomColors.primaryAccent,
+                          overlayColor: CustomColors.primaryBackground,
+                          child: Text("LOG-IN", style: TextStyle(color: CustomColors.primaryBackground, fontSize: 16, fontWeight: FontWeight.w800)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

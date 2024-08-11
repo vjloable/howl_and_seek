@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:howl_and_seek/utils/graphics.dart';
+import 'package:howl_and_seek/utils/custom_icons.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../common_widgets/rounded_elevated_button.dart';
@@ -18,7 +18,7 @@ class _ScanScreenState extends State<ScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.primaryBackground,
+      backgroundColor: CustomColors.secondaryBackground,
       body: Stack(
         children: [
           MobileScanner(
@@ -26,110 +26,156 @@ class _ScanScreenState extends State<ScanScreen> {
             onDetect: (barcodes) {
               barcodes.barcodes.isNotEmpty ? print(barcodes.barcodes.first.displayValue) : print("");
             },
-            placeholderBuilder: (p0, p1) {
-              return Expanded(child: Illustration.backgroundGlow);
-            },
           ),
-          Column(
-            children: [
-              const SizedBox(height: 50),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      width: 100,
-                      child: RoundedElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        backgroundColor: Colors.transparent,
-                        overlayColor: CustomColors.light,
-                        borderColor: CustomColors.light,
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 50),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    children: [
+                      SizedBox(
                         height: 30,
-                        child: Text("BACK", style: TextStyle(color: CustomColors.light, fontSize: 12, fontWeight: FontWeight.w400)),
+                        width: 100,
+                        child: RoundedElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          backgroundColor: Colors.transparent,
+                          overlayColor: CustomColors.secondaryBackground,
+                          borderColor: CustomColors.secondaryBackground,
+                          borderSide: BorderSide(color: CustomColors.secondaryBackground),
+                          height: 30,
+                          child: Text("BACK", style: TextStyle(color: CustomColors.secondaryBackground, fontSize: 12, fontWeight: FontWeight.w400)),
+                        ),
                       ),
-                    ),
-                    const Spacer(),
-                  ],
+                      const Spacer(),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 60),
-              SizedBox(
-                height: 48,
-                child: Text("SEEK", style: TextStyle(color: CustomColors.primaryAccent, fontSize: 32, fontWeight: FontWeight.w900)),
-              ),
-              const SizedBox(height: 45),
-              StreamBuilder(
-                stream: mobileScannerController.barcodes,
-                builder: (context, snapshot) {
-                  final scannedBarcodes = snapshot.data?.barcodes ?? [];
-                  return AnimatedSwitcher(
-                    duration: const Duration(seconds: 1),
-                    child: scannedBarcodes.isEmpty ? SizedBox(
-                      height: 275,
-                      width: 275,
-                      child: Flexible(
-                        child: CircularProgressIndicator(
-                          color: CustomColors.light,
-                          strokeWidth: 10,
-                          value: null,
+                const SizedBox(height: 60),
+                SizedBox(
+                  height: 48,
+                  child: Text("SEEK", style: TextStyle(color: CustomColors.primaryAccent, fontSize: 32, fontWeight: FontWeight.w900)),
+                ),
+                const SizedBox(height: 45),
+                StreamBuilder(
+                  stream: mobileScannerController.barcodes,
+                  builder: (context, snapshot) {
+                    final scannedBarcodes = snapshot.data?.barcodes ?? [];
+                    return AnimatedSwitcher(
+                      duration: const Duration(seconds: 1),
+                      child: scannedBarcodes.isEmpty ? FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Padding(
+                          padding: const EdgeInsets.all(100.0),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: CustomColors.secondaryBackground.withOpacity(0.25),
+                                  borderRadius: BorderRadius.circular(500),
+                                ),
+                                child: SizedBox(
+                                  height: 500,
+                                  width: 500,
+                                  child: CircularProgressIndicator(
+                                    color: CustomColors.light,
+                                    strokeWidth: 20,
+                                    value: null,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: CustomIcons.paws(CustomColors.light),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ) : SizedBox(
-                      height: 275,
-                      width: 275,
-                      child: Flexible(
-                        child: CircularProgressIndicator(
-                          color: CustomColors.primaryAccent,
-                          strokeWidth: 10,
-                          value: 1,
+                      ) : snapshot.data!.barcodes.length <= 5 ? FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Padding(
+                          padding: const EdgeInsets.all(100.0),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: CustomColors.secondaryBackground.withOpacity(0.25),
+                                  borderRadius: BorderRadius.circular(500),
+                                ),
+                                child: SizedBox(
+                                  height: 500,
+                                  width: 500,
+                                  child: CircularProgressIndicator(
+                                    color: CustomColors.error,
+                                    strokeWidth: 20,
+                                    value: null,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: CustomIcons.paws(CustomColors.error),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                  if (scannedBarcodes.isEmpty) {
-                    return SizedBox(
-                      height: 275,
-                      width: 275,
-                      child: Flexible(
-                        child: CircularProgressIndicator(
-                          color: CustomColors.light,
-                          strokeWidth: 10,
-                          value: null,
+                      ) : FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Padding(
+                          padding: const EdgeInsets.all(100.0),
+                          child: SizedBox(
+                            height: 500,
+                            width: 500,
+                            child: ElevatedButton(
+                              onPressed: () {}, // icon of the button
+                              style: ElevatedButton.styleFrom( // styling the button
+                                shape: const CircleBorder(),
+                                padding: const EdgeInsets.all(20),
+                                fixedSize: const Size(500, 500),
+                                backgroundColor: CustomColors.secondaryBackground,
+                                foregroundColor: CustomColors.primaryAccent,
+                                side: BorderSide(color: CustomColors.primaryAccent, width: 20),
+                              ),
+                              child: SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: CustomIcons.paws(CustomColors.primaryAccent),
+                                ),
+                              ),
+                            ),
+                            // child: RoundedElevatedButton(
+                            //   backgroundColor: CustomColors.secondaryBackground,
+                            //   onPressed: () {
+                            //     print("object");
+                            //   },
+                            //   overlayColor: CustomColors.primaryAccent,
+                            //   borderColor: CustomColors.primaryAccent,
+                            //   borderSide: BorderSide(color: CustomColors.primaryAccent, width: 20),
+                            //   child:
+                            // ),
+                          ),
                         ),
                       ),
                     );
-                    // return const RoundedElevatedButton(
-                    //   backgroundColor: Color(0xFFFFFFFF),
-                    //   onPressed: null,
-                    //   borderColor: Color(0xFF6590FF),
-                    //   child: Text("CAPTURING", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                    // );
-                  } else {
-                    return SizedBox(
-                      height: 275,
-                      width: 275,
-                      child: Flexible(
-                        child: CircularProgressIndicator(
-                          color: CustomColors.primaryAccent,
-                          strokeWidth: 10,
-                          value: 1,
-                        ),
-                      ),
-                    );
-                    // if (scannedBarcodes.first.displayValue!.length < 28) {
-                    //   return RoundedElevatedButton(
-                    //     backgroundColor: const Color(0xFFFFFFFF),
-                    //     onPressed: null,
-                    //     child: Text(scannedBarcodes.first.displayValue!, style: const TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
-                    //   );
-                    // }
-                  }
-                },
-              ),
-            ],
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

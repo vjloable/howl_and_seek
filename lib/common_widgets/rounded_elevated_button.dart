@@ -33,6 +33,7 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
               side: widget.borderSide ?? const BorderSide(),
             ),
             overlayColor: widget.overlayColor,
+            shadowColor: Colors.transparent,
           ),
           child: widget.child ?? const SizedBox()
       ),

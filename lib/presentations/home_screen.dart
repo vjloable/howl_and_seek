@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:howl_and_seek/presentations/scanner/scan_screen.dart';
 
 import '../common_widgets/rounded_elevated_button.dart';
+import '../domain/player_model.dart';
 import '../utils/custom_colors.dart';
 import '../utils/custom_icons.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Player? player;
+  const HomeScreen({super.key, required this.player});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

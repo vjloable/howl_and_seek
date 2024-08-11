@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:howl_and_seek/application/authentication_service.dart';
 import 'package:howl_and_seek/common_widgets/rounded_elevated_button.dart';
 import 'package:howl_and_seek/presentations/home_screen.dart';
 import 'package:howl_and_seek/presentations/ranks_screen.dart';
@@ -6,10 +7,12 @@ import 'package:howl_and_seek/utils/custom_icons.dart';
 import 'package:howl_and_seek/utils/state_handlers.dart';
 
 import '../common_widgets/bottom_appbar_widget.dart';
+import '../domain/player_model.dart';
 import '../utils/custom_colors.dart';
 
 class ParentScreen extends StatefulWidget {
-  const ParentScreen({super.key});
+  final Player player;
+  const ParentScreen({super.key, required this.player});
 
   @override
   State<ParentScreen> createState() => _ParentScreenState();
@@ -46,7 +49,7 @@ class _ParentScreenState extends State<ParentScreen> {
               return AnimatedSwitcher(
                 duration: const Duration(milliseconds: 600),
                 child: pageStateHandler.currentPage == 0
-                    ? const HomeScreen()
+                    ? HomeScreen(player: widget.player)
                     : pageStateHandler.currentPage == 1
                     ? const RanksScreen()
                     : pageStateHandler.currentPage == 2
@@ -85,7 +88,7 @@ class _ParentScreenState extends State<ParentScreen> {
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                                child: Text("Juan de la cruz", style: TextStyle(color: CustomColors.light, fontSize: 14, fontWeight: FontWeight.w500)),
+                                child: Text(widget.player.name!, style: TextStyle(color: CustomColors.light, fontSize: 14, fontWeight: FontWeight.w500)),
                               ),
                             ),
                             SizedBox(
@@ -94,6 +97,8 @@ class _ParentScreenState extends State<ParentScreen> {
                               child: RoundedElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
+                                  AuthenticationService.signOut();
+                                  Navigator.of(context).maybePop();
                                 },
                                 backgroundColor: Colors.transparent,
                                 overlayColor: CustomColors.secondaryAccent,
