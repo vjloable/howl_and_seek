@@ -58,7 +58,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '493379198348',
     projectId: 'howl-and-seek',
     authDomain: 'howl-and-seek.firebaseapp.com',
+    databaseURL: 'https://howl-and-seek-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'howl-and-seek.appspot.com',
     measurementId: 'G-NKK4Z5T4MW',
   );
+
 }

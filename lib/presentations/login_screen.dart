@@ -87,107 +87,114 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text("LOG-IN", style: TextStyle(color: CustomColors.light, fontSize: 24, fontWeight: FontWeight.w700)),
                         const SizedBox(height: 40),
-                        TextFormField(
-                          controller: emailTextEditingController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please provide your email address';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(
-                            color: CustomColors.light,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          textAlign: TextAlign.left,
-                          textAlignVertical: TextAlignVertical.center,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            errorStyle: TextStyle(
-                              color: CustomColors.error,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.error),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.light),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.light.withOpacity(0.2)),
-                            ),
-                            isCollapsed: false,
-                            contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 8),
-                            fillColor: CustomColors.secondaryBackground,
-                            filled: true,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.only(left: 10, right: 20),
-                              child: CustomIcons.email(CustomColors.light),
-                            ),
-                            hintText: 'Email Address',
-                            hintStyle: TextStyle(
+                        SizedBox(
+                          height: 65,
+                          child: TextFormField(
+                            controller: emailTextEditingController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please provide your email address';
+                              }
+                              return null;
+                            },
+                            style: TextStyle(
                               color: CustomColors.light,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            textAlign: TextAlign.left,
+                            textAlignVertical: TextAlignVertical.center,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              errorStyle: TextStyle(
+                                color: CustomColors.error,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.error),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.light),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.light.withOpacity(0.2)),
+                              ),
+                              isCollapsed: false,
+                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 8),
+                              fillColor: CustomColors.secondaryBackground,
+                              filled: true,
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.only(left: 10, right: 20),
+                                child: CustomIcons.email(CustomColors.light),
+                              ),
+                              hintText: 'Email Address',
+                              hintStyle: TextStyle(
+                                color: CustomColors.light,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 30),
-                        TextFormField(
-                          controller: passwordTextEditingController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please provide your password';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(
-                            color: CustomColors.light,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                          textAlignVertical: TextAlignVertical.center,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            errorStyle: TextStyle(
-                              color: CustomColors.error,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.error),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.light),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(color: CustomColors.light.withOpacity(0.2)),
-                            ),
-                            isCollapsed: false,
-                            contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 8),
-                            fillColor: CustomColors.secondaryBackground,
-                            filled: true,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.only(left: 10, right: 20),
-                              child: CustomIcons.password(CustomColors.light),
-                            ),
-                            hintText: 'Password',
-                            hintStyle: TextStyle(
+                        SizedBox(
+                          height: 65,
+                          width: double.infinity,
+                          child: TextFormField(
+                            controller: passwordTextEditingController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please provide your password';
+                              }
+                              return null;
+                            },
+                            style: TextStyle(
                               color: CustomColors.light,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
+                            ),
+                            textAlign: TextAlign.left,
+                            textAlignVertical: TextAlignVertical.center,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              errorStyle: TextStyle(
+                                color: CustomColors.error,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.error),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.light),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                borderSide: BorderSide(color: CustomColors.light.withOpacity(0.2)),
+                              ),
+                              isCollapsed: false,
+                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 8),
+                              fillColor: CustomColors.secondaryBackground,
+                              filled: true,
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.only(left: 10, right: 20),
+                                child: CustomIcons.password(CustomColors.light),
+                              ),
+                              hintText: 'Password',
+                              hintStyle: TextStyle(
+                                color: CustomColors.light,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
@@ -233,19 +240,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 isValidatingLogin = false;
                               });
                             }
-
+            
                           },
                           backgroundColor: CustomColors.primaryAccent,
                           overlayColor: CustomColors.primaryBackground,
                           child: isValidatingLogin
-                              ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: CustomColors.primaryBackground))
+                              ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: CustomColors.primaryAccent))
                               : Text("LOG-IN", style: TextStyle(color: CustomColors.primaryBackground, fontSize: 16, fontWeight: FontWeight.w800)),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 110),
+                const SizedBox(height: 100),
               ],
             ),
           ),

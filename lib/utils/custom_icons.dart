@@ -7,8 +7,19 @@ class CustomIcons{
   static Widget password(Color color) => SvgPicture.asset("graphics/icons/Icon-Password.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget confirmPassword(Color color) => SvgPicture.asset("graphics/icons/Icon-ConfirmPassword.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
 
+  static Widget pawsBig(Color color) => SvgPicture.asset("graphics/icons/Icon-BigPaws.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget savageMark(Color color) => SvgPicture.asset("graphics/icons/Icon-SavageMark.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget huntsGamble(Color color) => SvgPicture.asset("graphics/icons/Icon-HuntsGamble.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget moonlitWard(Color color) => SvgPicture.asset("graphics/icons/Icon-MoonlitWard.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget bloodLash(Color color) => SvgPicture.asset("graphics/icons/Icon-Bloodlash.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+
+  static Widget coin = SvgPicture.asset("graphics/icons/Icon-Coin.svg");
+  static Widget shield = SvgPicture.asset("graphics/icons/Icon-Shield.svg");
+
+  static Widget cursedMark(Color color) => SvgPicture.asset("graphics/icons/Icon-CursedMark.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget paws(Color color) => SvgPicture.asset("graphics/icons/Icon-Paws.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget user(Color color) => SvgPicture.asset("graphics/icons/Icon-User.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget maintenance(Color color) => SvgPicture.asset("graphics/icons/Icon-Maintenance.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
 
   static Widget home(Color color) => SvgPicture.asset("graphics/icons/Icon-Home.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget ranks(Color color) => SvgPicture.asset("graphics/icons/Icon-Ranks.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));

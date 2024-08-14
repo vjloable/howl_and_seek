@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:howl_and_seek/presentations/scanner/scan_screen.dart';
+import 'package:howl_and_seek/presentations/receive_screen.dart';
+import 'package:howl_and_seek/presentations/scanner/curse_hero_screen.dart';
+import 'package:howl_and_seek/presentations/scanner/seek_screen.dart';
 import 'package:intl/intl.dart';
 
 import '../common_widgets/rounded_elevated_button.dart';
@@ -140,7 +142,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   child: RoundedElevatedButton(
                                     backgroundColor: CustomColors.secondaryBackground,
                                     onPressed: () {
-                                      print("object");
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurseHeroScreen(
+                                        title: "HUNT’S GAMBLE",
+                                        icon: CustomIcons.moonlitWard(CustomColors.light),
+                                      ),));
                                     },
                                     overlayColor: CustomColors.light,
                                     child: CustomIcons.howl(CustomColors.light),
@@ -184,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   child: RoundedElevatedButton(
                                     backgroundColor: CustomColors.light,
                                     onPressed: () {
-                                      print("object");
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ReceiveScreen(player: widget.player!)));
                                     },
                                     overlayColor: CustomColors.secondaryBackground,
                                     child: CustomIcons.receive(CustomColors.secondaryBackground),
@@ -228,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                   child: RoundedElevatedButton(
                                     backgroundColor: CustomColors.secondaryBackground,
                                     onPressed: () {
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanScreen()));
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SeekScreen(player: widget.player!,)));
                                     },
                                     overlayColor: CustomColors.light,
                                     child: CustomIcons.seek(CustomColors.light),

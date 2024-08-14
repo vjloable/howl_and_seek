@@ -7,9 +7,12 @@ class Player{
   final DateTime? createdAt;
   final DateTime? lastScan;
   final bool isLocked;
+  final bool hasPaid;
   final int permissionLevel;
   final int permissionMax;
+  final int shields;
   final double points;
+  final String? ability;
 
   Player({
     this.name = "",
@@ -17,10 +20,13 @@ class Player{
     this.createdAt,
     this.lastScan,
     required this.email,
-    this.isLocked = false,
+    this.isLocked = true,
+    this.hasPaid = false,
     this.permissionLevel = 0,
     this.permissionMax = 0,
+    this.shields = 0,
     this.points = 0,
+    this.ability,
   });
 
   factory Player.fromFirestore(
@@ -35,9 +41,12 @@ class Player{
       createdAt: (data?['creation'] as Timestamp).toDate(),
       lastScan: data?['lastScan'] == null ? null : ((data?['lastScan'] as Timestamp).toDate()),
       isLocked: data?['isLocked'],
+      hasPaid: data?['hasPaid'],
       permissionLevel: data?['permissionLevel'],
       permissionMax: data?['permissionMax'],
+      shields: data?['shields'],
       points: data?['points'],
+      ability: data?['ability'],
     );
   }
 
@@ -50,9 +59,12 @@ class Player{
       if (createdAt != null) "creation" : createdAt else "creation" : serverTimestamp,
       if (lastScan != null) "birthdate" : lastScan else "lastScan" : null,
       "isLocked": isLocked,
+      "hasPaid": hasPaid,
       "permissionLevel": permissionLevel,
       "permissionMax": permissionMax,
+      "shields": shields,
       "points": points,
+      "ability": ability,
     };
   }
 }

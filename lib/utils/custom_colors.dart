@@ -13,6 +13,19 @@ class CustomColors {
     const Color(0xFFD9FFF7),
   ];
 
+  static List<Color> strongBackground = [
+    const Color(0xFFFF5454),
+    const Color(0xFFFF6C6C),
+  ];
+
+  static List<Color> darkBackground = [
+    const Color(0xFF111615),
+    const Color(0xFF122120),
+    const Color(0xFF122523),
+    const Color(0xFF132220),
+    const Color(0xFF111818),
+  ];
+
   static List<Color> accentBackground = [
     CustomColors.primaryAccent,
     CustomColors.secondaryAccent,
@@ -22,6 +35,7 @@ class CustomColors {
     const Color(0xFF0C0C0C),
     const Color(0xFF1B1B1B),
   ];
+
   static List<Color> gold = [
     const Color(0xFF724D00),
     const Color(0xFFDB7E10),
@@ -29,6 +43,7 @@ class CustomColors {
     const Color(0xFFFFC44D),
     const Color(0xFFD89100),
   ];
+
   static List<Color> silver = [
     const Color(0xFFAEAEAE),
     const Color(0xFFE7E7E7),

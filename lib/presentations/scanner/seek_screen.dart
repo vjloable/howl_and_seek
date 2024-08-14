@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:howl_and_seek/presentations/scanner/qrchecker_screen.dart';
 import 'package:howl_and_seek/utils/custom_icons.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../common_widgets/rounded_elevated_button.dart';
+import '../../domain/player_model.dart';
 import '../../utils/custom_colors.dart';
 
-class ScanScreen extends StatefulWidget {
-  const ScanScreen({super.key,});
+class SeekScreen extends StatefulWidget {
+  final Player player;
+  const SeekScreen({super.key, required this.player,});
 
   @override
-  State<ScanScreen> createState() => _ScanScreenState();
+  State<SeekScreen> createState() => _SeekScreenState();
 }
 
-class _ScanScreenState extends State<ScanScreen> {
+class _SeekScreenState extends State<SeekScreen> {
   MobileScannerController mobileScannerController = MobileScannerController();
 
   @override
@@ -59,7 +62,7 @@ class _ScanScreenState extends State<ScanScreen> {
                   height: 48,
                   child: Text("SEEK", style: TextStyle(color: CustomColors.primaryAccent, fontSize: 32, fontWeight: FontWeight.w900)),
                 ),
-                const SizedBox(height: 45),
+                const SizedBox(height: 20),
                 StreamBuilder(
                   stream: mobileScannerController.barcodes,
                   builder: (context, snapshot) {
@@ -79,8 +82,8 @@ class _ScanScreenState extends State<ScanScreen> {
                                   borderRadius: BorderRadius.circular(500),
                                 ),
                                 child: SizedBox(
-                                  height: 500,
-                                  width: 500,
+                                  height: 300,
+                                  width: 300,
                                   child: CircularProgressIndicator(
                                     color: CustomColors.light,
                                     strokeWidth: 20,
@@ -99,7 +102,7 @@ class _ScanScreenState extends State<ScanScreen> {
                             ],
                           ),
                         ),
-                      ) : snapshot.data!.barcodes.length <= 5 ? FittedBox(
+                      ) : scannedBarcodes.first.rawValue!.length <= 5 ? FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Padding(
                           padding: const EdgeInsets.all(100.0),
@@ -112,8 +115,8 @@ class _ScanScreenState extends State<ScanScreen> {
                                   borderRadius: BorderRadius.circular(500),
                                 ),
                                 child: SizedBox(
-                                  height: 500,
-                                  width: 500,
+                                  height: 300,
+                                  width: 300,
                                   child: CircularProgressIndicator(
                                     color: CustomColors.error,
                                     strokeWidth: 20,
@@ -137,14 +140,17 @@ class _ScanScreenState extends State<ScanScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(100.0),
                           child: SizedBox(
-                            height: 500,
-                            width: 500,
+                            height: 300,
+                            width: 300,
                             child: ElevatedButton(
-                              onPressed: () {}, // icon of the button
-                              style: ElevatedButton.styleFrom( // styling the button
+                              onPressed: () {
+                                // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PositiveScreen()));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => QRCheckerScreen(code: scannedBarcodes.first.rawValue!, player: widget.player,)));
+                              },
+                              style: ElevatedButton.styleFrom(
                                 shape: const CircleBorder(),
                                 padding: const EdgeInsets.all(20),
-                                fixedSize: const Size(500, 500),
+                                fixedSize: const Size(300, 300),
                                 backgroundColor: CustomColors.secondaryBackground,
                                 foregroundColor: CustomColors.primaryAccent,
                                 side: BorderSide(color: CustomColors.primaryAccent, width: 20),
@@ -158,16 +164,6 @@ class _ScanScreenState extends State<ScanScreen> {
                                 ),
                               ),
                             ),
-                            // child: RoundedElevatedButton(
-                            //   backgroundColor: CustomColors.secondaryBackground,
-                            //   onPressed: () {
-                            //     print("object");
-                            //   },
-                            //   overlayColor: CustomColors.primaryAccent,
-                            //   borderColor: CustomColors.primaryAccent,
-                            //   borderSide: BorderSide(color: CustomColors.primaryAccent, width: 20),
-                            //   child:
-                            // ),
                           ),
                         ),
                       ),

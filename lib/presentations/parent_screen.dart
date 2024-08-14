@@ -48,7 +48,7 @@ class _ParentScreenState extends State<ParentScreen> {
                 child: pageStateHandler.currentPage == 0
                     ? HomeScreen(player: widget.player)
                     : pageStateHandler.currentPage == 1
-                    ? const RanksScreen()
+                    ? RanksScreen(player: widget.player)
                     : pageStateHandler.currentPage == 2
                     ? const Placeholder()
                     : const Placeholder(),

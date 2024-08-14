@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../domain/player_model.dart';
 
 final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-
+final FirebaseDatabase _firebaseRealtime = FirebaseDatabase.instance;
 class PlayerRepository {
 
+  /// Firebase Firestore
   static Future<String> setPermissionLevel(Player player, int level) {
     return _firebaseFirestore
         .collection("players")
@@ -68,6 +70,30 @@ class PlayerRepository {
         .get()
         .then((QuerySnapshot<Player> querySnapshot) => querySnapshot.docs.cast()
     );
+  }
+
+  /// Firebase Realtime Database
+  static void initPoints(String uid, String name) async {
+    DatabaseReference pointsRef = _firebaseRealtime.ref('points');
+    await pointsRef.set({
+      "${uid}_$name": 0,
+    }).then((_) {
+      print("Success");
+    }).onError((error, stackTrace) {
+      print("Error setting the player by uid, $error");
+    });
+  }
+
+  static void addPoints(String uid, String name, double points) async {
+    DatabaseReference pointsRef = _firebaseRealtime.ref('points');
+    await pointsRef.set({
+      "${uid}_$name": ServerValue.increment(points),
+    });
+  }
+
+  static Future<Iterable<DataSnapshot>> getPoints() async {
+    final pointsRef = _firebaseRealtime.ref('points').orderByValue();
+    return (await pointsRef.get()).children;
   }
 
 }

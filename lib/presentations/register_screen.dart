@@ -298,7 +298,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             backgroundColor: CustomColors.primaryAccent,
                             overlayColor: CustomColors.primaryBackground,
                             child: isValidatingRegister
-                                ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: CustomColors.primaryBackground))
+                                ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: CustomColors.primaryAccent))
                                 : Text("REGISTER", style: TextStyle(color: CustomColors.primaryBackground, fontSize: 16, fontWeight: FontWeight.w800)),
                           ),
                         ),
